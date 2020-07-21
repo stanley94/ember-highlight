@@ -1,6 +1,6 @@
-import { run } from '@ember/runloop';
 import Component from '@ember/component';
 import layout from './template';
+import { run } from '@ember/runloop';
 
 const HighlightTerm = Component.extend({
   layout,
@@ -38,17 +38,17 @@ const HighlightTerm = Component.extend({
         }, []);
       }
 
-      if (this.$()) {
-        this.$().highlight(term, options);
+      if (window.$(this.element)) {
+        window.$(this.element).highlight(term, options);
       }
     }
   },
 
   unhighlight() {
-    let $el = this.$();
+    let $el = window.$(this.element);
     
     if ($el && typeof $el.unhighlight === 'function') {
-      this.$().unhighlight();
+      $el.unhighlight();
     }
   }
 });
